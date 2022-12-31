@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // // concat, filter, map, slice, spread 스프레드(전개) 연산자
+        // // shallow copy : 주소 값만 복사
+        // // depp copy : 값을 모두 복사해서 새로운 객체 생성
+        // const a = [1, 2, 3];
+        // const b = [...a];
+        // console.log("1. ================= 스프레드 연산자(spread)");
+        // b.push(4);
+        // console.log(`a의 값은 : ${a}`);
+        // console.log(`b의 값은 : ${b}`);
+        
+        
+        // console.log("2. ================= 추가하기(concat, push)");
+        // const a2 = [1, 2, 3];
+        // const b2 = a2.concat(4); 
+        // // concat은 깊은 복사가 된다, push는 깊은 복사 불가능
+        // // concat은 불변함수, push는 불변함수 x
+        // console.log(`a2의 값은 : ${a2}`);
+        // console.log(`b2의 값은 : ${b2}`);
+        
+        // // , == concat 동일
+        // const c2 = [0, ...a2, 4];
+        // console.log(`c의 값은 : ${c2}`);
+        
+        // console.log("3. ================= 걸러내기(filter)");
+        // const a3 = [1, 2, 3];
+        // const b3 = a3.filter((n) => {return n != 1}); // bool을 return => true만 걸러낸다
+        // console.log(b3);
+        
+        // console.log("4. ================= 잘라내기(slice)");
+        // const a4 = [1, 2, 3];
+        // const b4 = a4.slice(0,2);
+        // console.log(`b4의 값은 : ${b4}`); 
+        // const c4 = [a4.slice(0,1), 4, a4.slice(1, 2)];
+        // const cc4 = [a4.slice(0, 2)];
+        // const cs4 = [...a4.slice(0, 2), 4, ...a4.slice(2, 3)];
+        // console.log(`c4의 값은 : ${c4}`); 
+        // console.log(cc4); 
+        // console.log(cs4); 
+        
+        // console.log("5. ================= 반복하기(map)");
+        // const a5 = [1, 2, 3];
+        // // previous
+        // for (let i = 0; i < a5.length; i++){
+        //     console.log(a5[i]);
+        // }
+        // // current
+        // console.log("forEach");
+        // a5.forEach((n) => { console.log(n) }); // return 불가
+        
+        // const b5 = a5.map((n) => n+10); // == const b5 = [...a5];
+        // console.log(b5);
+
+        // spread와는 다르게 값 하나하나를 가공이 가능하다
+        
+        const data = {phone : "2222"};
+        const a6 = {id : 1, name : "홍길동", phone : "1111", age : 17, gender : "남"};
+        const a7 = {...a6, ...data}; // data를 spread로 뿌려야 하낟.
+        console.log(a6);
+        console.log(a7);
+
+        const users = [
+            {id : 1, name : "구태모", phone : "2222"},
+            {id : 2, name : "이대엽", phone : "3333"},
+            {id : 3, name : "오승훈", phone : "4444"},
+        ];
+
+        const updateUserDto = {
+            id : 2, name : "홍길동"
+        };
+
+        // const newUsers = users.map(user => user.id === updateUserDto.id ? {...user, ...updateUserDto} : user);
+        // console.log(newUsers);
+
+        const newUsers = users.map((user) => {
+            if (user.id === updateUserDto.id){
+                return {...user, ...updateUserDto};
+            }
+            return user;
+        });
+
+        console.log(newUsers);
+
+        </script>
+</body>
+</html>
